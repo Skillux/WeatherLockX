@@ -4,6 +4,9 @@ author: Skillux
 version: 1.0
 commands:
   weatherlock:
-    usage: /<command> [sun|rain|thunder|reload|off]
+    usage: /<command> [clear|rain|thunder|reload|off]
     description: Changes and locks the weather to the either sunny, rainy, or thundering.
     aliases: [wl, lockweather, weatherlockx, wlx, lw]
+permissions:
+  weatherlockx.admin: 
+    description: Gives access to all WeatherLockX commands.

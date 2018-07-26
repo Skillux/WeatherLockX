@@ -34,7 +34,7 @@ public class Main extends JavaPlugin implements Listener {
     		
 	}
 	
-	List<String> sun = new ArrayList<>();
+	List<String> clear = new ArrayList<>();
 	List<String> rain = new ArrayList<>();
 	List<String> thunder = new ArrayList<>();
 	List<String> enabled = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Main extends JavaPlugin implements Listener {
 		String world = player.getWorld().getName();
 		World world1 = player.getWorld();
 		
-		if(player.hasPermission("weatherlockx.lock")) {
+		if(player.hasPermission("weatherlockx.admin")) {
 			
 			 if(args.length == 0) {
 				 
@@ -55,7 +55,7 @@ public class Main extends JavaPlugin implements Listener {
 				 player.sendMessage(" ");
 				 player.sendMessage(ChatColor.DARK_AQUA + "/weatherlock: " + ChatColor.WHITE + "Displays a list of commands.");
 				 player.sendMessage(" ");
-				 player.sendMessage(ChatColor.DARK_AQUA + "/weatherlock <Sun/Rain/Thunder>: " + ChatColor.WHITE + "Changes and locks the weather to the either sunny, rainy, or thundering.");
+				 player.sendMessage(ChatColor.DARK_AQUA + "/weatherlock <Clear/Rain/Thunder>: " + ChatColor.WHITE + "Changes and locks the weather to either clear, rainy, or thundering.");
 				 player.sendMessage(" ");
 				 player.sendMessage(ChatColor.DARK_AQUA + "/weatherlock off: " + ChatColor.WHITE + "Returns the weather cycle to normal.");
 				 player.sendMessage(" ");
@@ -66,9 +66,9 @@ public class Main extends JavaPlugin implements Listener {
 				 return true; 
 			 }
 			 
-			 if(args[0].equalsIgnoreCase("sun")) {
+			 if(args[0].equalsIgnoreCase("clear")) {
 				 
-				 if(sun.contains(world)) {
+				 if(clear.contains(world)) {
 					 
 					 player.sendMessage(getConfig().getString("Already-Enabled").replaceAll("&", "§"));
 					 
@@ -91,10 +91,10 @@ public class Main extends JavaPlugin implements Listener {
 				 player.getWorld().setStorm(false);
 				 player.getWorld().setThundering(false);
 				 
-				 if(!sun.contains(world)) {
+				 if(!clear.contains(world)) {
 					 
-					 sun.add(world);
-					 player.sendMessage(getConfig().getString("WeatherLock-Set").replaceAll("&", "§").replaceAll("%weather%", "Sunny"));
+					 clear.add(world);
+					 player.sendMessage(getConfig().getString("WeatherLock-Set").replaceAll("&", "§").replaceAll("%weather%", "Clear"));
 
 				 }
 				 
@@ -108,9 +108,9 @@ public class Main extends JavaPlugin implements Listener {
 					 
 					 player.sendMessage(getConfig().getString("Already-Enabled").replaceAll("&", "§"));
 					 
-				 } else if (sun.contains(world)) {
+				 } else if (clear.contains(world)) {
 					 
-					 sun.remove(world);
+					 clear.remove(world);
 					 
 				 } else if(thunder.contains(world)) {
 					 
@@ -143,9 +143,9 @@ public class Main extends JavaPlugin implements Listener {
 					 
 					 player.sendMessage(getConfig().getString("Already-Enabled").replaceAll("&", "§"));
 					 
-				 } else if (sun.contains(world)) {
+				 } else if (clear.contains(world)) {
 					 
-					 sun.remove(world);
+					 clear.remove(world);
 					 
 				 } else if(rain.contains(world)) {
 					 
@@ -187,8 +187,8 @@ public class Main extends JavaPlugin implements Listener {
 
 				 }
 				 
-				 if(sun.contains(world)) {
-					 sun.remove(world);
+				 if(clear.contains(world)) {
+					 clear.remove(world);
 				 }
 				 
 				 if(rain.contains(world)) {
